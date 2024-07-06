@@ -1,0 +1,73 @@
+plugins {
+    id 'java'
+    id 'org.jsonschema2pojo' version '1.2.1'
+}
+
+repositories {
+    jcenter()
+}
+
+dependencies {
+    implementation 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
+    annotationProcessor 'com.fasterxml.jackson.core:jackson-databind:2.13.0'
+}
+
+jsonSchema2Pojo {
+    generateBuilders = false
+    includeJsonTypeInfoAnnotation = false
+    usePrimitives = false
+    source = [
+            sourceDirectory: file("${projectDir}/src/main/resources"),
+            includes: ["**/*.json"]
+    ]
+    targetDirectory = file("${projectDir}/src/generated/java")
+    targetPackage = 'com.example'
+    includeHashcodeAndEquals = true
+    includeConstructors = false
+    constructorsRequiredPropertiesOnly = false
+    includeRequiredPropertiesConstructor = false
+    includeAllPropertiesConstructor = true
+    includeCopyConstructor = false
+    includeToString = true
+    annotationStyle = AnnotationStyle.JACKSON2
+    useLongIntegers = false
+    useBigIntegers = false
+    useDoubleNumbers = true
+    useBigDecimals = false
+    includeJsr303Annotations = false
+    includeJsr305Annotations = false
+    useOptionalForGetters = false
+    sourceType = SourceType.JSONSCHEMA
+    removeOldOutput = false
+    outputEncoding = 'UTF-8'
+    useJodaDates = false
+    useJodaLocalDates = false
+    useJodaLocalTimes = false
+    dateTimeType = null
+    dateType = null
+    timeType = null
+    parcelable = false
+    serializable = false
+    initializeCollections = true
+    classNamePrefix = ''
+    classNameSuffix = ''
+    includeGetters = true
+    includeSetters = true
+    includeDynamicAccessors = false
+    includeDynamicGetters = false
+    includeDynamicSetters = false
+    includeDynamicBuilders = false
+    formatDates = false
+    formatTimes = false
+    formatDateTimes = false
+    customDatePattern = null
+    customTimePattern = null
+    customDateTimePattern = null
+    refFragmentPathDelimiters = "#/"
+    sourceSortOrder = SourceSortOrder.OS
+    formatTypeMapping = [:]
+    useInnerClassBuilders = false
+    includeConstructorPropertiesAnnotation = false
+    includeGeneratedAnnotation = true
+    useJakartaValidation = false
+}
